@@ -3,3 +3,4 @@ temp
 venv
 TODO.md
 *.code-workspace
+.idea

@@ -1,24 +1,16 @@
-import flow
+from whulogin import CardLoginSession
+from cardflow import CardFlow
 import time
-import login
 import qianji
 
-ip = "202.114.64.162"
+username = input("Username:")
+password = input("Password:")
 
-username = input("username: ")
-password = input("password: ")
+startDate = time.strftime("%Y-%m-%d", time.localtime())
+endDate = time.strftime("%Y-%m-%d", time.localtime())
 
-sdate = time.strftime("%Y-%m-%d", time.localtime())
-edate = time.strftime("%Y-%m-%d", time.localtime())
+cardLoginSession = CardLoginSession(username, password)
+cardFlow = CardFlow(cardLoginSession)
+# cardFlow.getCardFlow(startDate, endDate)
 
-session = login.caslogin(username, password)
-if session == None:
-    print("caslogin failed")
-    exit(1)
-
-session = login.mainlogin(ip, session)
-
-card_info = flow.get_card_info(ip, session)
-card_flow = flow.get_card_flow(ip, session, sdate, edate, card_info["account"])
-
-qianji.main(card_flow["rows"])
+qianji.main(cardFlow.getCardFlow(startDate, endDate)["rows"])
