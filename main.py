@@ -6,11 +6,11 @@ import qianji
 username = input("Username:")
 password = input("Password:")
 
-startDate = time.strftime("%Y-%m-%d", time.localtime())
-endDate = time.strftime("%Y-%m-%d", time.localtime())
+start_date = time.strftime("%Y-%m-%d", time.localtime())
+end_date = time.strftime("%Y-%m-%d", time.localtime())
 
-cardLoginSession = CardLoginSession(username, password)
-cardFlow = CardFlow(cardLoginSession)
+card_login_session = CardLoginSession(username, password)
+card_flow = CardFlow(card_login_session)
 # cardFlow.getCardFlow(startDate, endDate)
 
-qianji.main(cardFlow.getCardFlow(startDate, endDate)["rows"])
+qianji.main(card_flow.get_card_flow(start_date, end_date)["rows"])
