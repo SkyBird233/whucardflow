@@ -10,11 +10,11 @@ def termux_open(uris):
 
 def meal_time(meal_time):
     hour = time.strptime(meal_time, "%Y-%m-%d %H:%M:%S").tm_hour
-    if hour >= 6 and hour < 10:
+    if 6 <= hour < 10:
         return "早餐"
-    elif hour >= 10 and hour < 14:
+    elif 10 <= hour < 14:
         return "午餐"
-    elif hour >= 14 and hour < 20:
+    elif 14 <= hour < 20:
         return "晚餐"
     else:
         return "零食"

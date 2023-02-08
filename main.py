@@ -1,7 +1,7 @@
-from whulogin import CardLoginSession
-from cardflow import CardFlow
+from src.whulogin import CardLoginSession
+from src.cardflow import CardFlow
 import time
-import qianji
+from src import qianji
 
 username = input("Username:")
 password = input("Password:")
