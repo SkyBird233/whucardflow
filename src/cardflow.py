@@ -19,10 +19,10 @@ class CardFlow:
         else:
             raise Exception("Failed to get card info from {_ip}")
 
-    def get_card_info(self):
+    def get_card_info(self) -> dict:
         return self._card_info
 
-    def get_card_flow(self, start_date, end_date, max_items=100, account=""):
+    def get_card_flow(self, start_date, end_date, max_items=100, account="") -> dict:
         if account == "":
             account = self._card_info["account"]
         data = {

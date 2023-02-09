@@ -1,16 +1,21 @@
 from src.whulogin import CardLoginSession
 from src.cardflow import CardFlow
-import time
+from src.config import Config
 from src import qianji
 
-username = input("Username:")
-password = input("Password:")
+config = Config()
+if not config.get("username"):
+    username = input("Username:")
+if not config.get("password"):
+    password = input("Password:")
 
-start_date = time.strftime("%Y-%m-%d", time.localtime())
-end_date = time.strftime("%Y-%m-%d", time.localtime())
-
-card_login_session = CardLoginSession(username, password)
+card_login_session = CardLoginSession(config.get("username"), config.get("password"))
 card_flow = CardFlow(card_login_session)
-# cardFlow.getCardFlow(startDate, endDate)
 
-qianji.main(card_flow.get_card_flow(start_date, end_date)["rows"])
+main_data = card_flow.get_card_flow(config.get("start_date"), config.get("end_date"))[
+    "rows"
+]
+if config.get("standard_output"):
+    print(main_data)
+if config.get("qianji"):
+    qianji.main(main_data)

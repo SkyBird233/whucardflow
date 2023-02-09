@@ -48,7 +48,10 @@ class CasLoginSession(requests.Session):
         return ct
 
     def is_captcha_required(self):
-        # 检查是否需要验证码。内网连接时一般不需要验证码
+        """
+        检查是否需要验证码。
+        内网连接时一般不需要验证码
+        """
         params = {
             "username": self._username,
             "pwdEncrypt2": "pwdEncryptSalt",
