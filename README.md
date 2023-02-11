@@ -38,7 +38,8 @@
     抓取内容的日期范围
     - start_date
     - end_date
-- options
+- others
+    - output_csv: 是否输出到 csv 文件，填入文件名路径。为空则不输出到 csv 文件
     - standard_output: 是否输出到标准输出
     - qianji: 是否输出到钱迹
 
@@ -60,4 +61,9 @@
     ```bash
     export WHUCF_USERNAME=202200000000, WHUCF_PASSWORD=123456
     python main.py -s 2020-01-01 -e 2020-01-31 -o
+    python main.py -s 2020-02-01 -e 2020-02-31 -o
+    ```
+- 设定过帐号的情况下导出当日记录至 csv 文件
+    ```bash
+    WHUCF_PASSWORD=123456 python main.py -c output.csv
     ```

@@ -1,4 +1,5 @@
 import json
+import csv
 
 
 class CardFlow:
@@ -19,10 +20,10 @@ class CardFlow:
         else:
             raise Exception("Failed to get card info from {_ip}")
 
-    def get_card_info(self) -> dict:
+    def get_card_info(self):
         return self._card_info
 
-    def get_card_flow(self, start_date, end_date, max_items=100, account="") -> dict:
+    def get_card_flow_raw(self, start_date, end_date, max_items=100, account=""):
         if account == "":
             account = self._card_info["account"]
         data = {
@@ -37,3 +38,20 @@ class CardFlow:
             data=data,
         )
         return r.json()
+
+    def get_card_flow_list(self, start_date, end_date, max_items=100, account=""):
+        raw_json = self.get_card_flow_raw(start_date, end_date, max_items, account)[
+            "rows"
+        ]
+        list = []
+        for i in raw_json:
+            list.append([i["OCCTIME"], i["TRANAMT"], i["MERCNAME"].strip()])
+        return list
+
+    def output_csv(
+        self, start_date, end_date, output_file="output.csv", max_items=100, account=""
+    ):
+        flow_list = self.get_card_flow_list(start_date, end_date, max_items, account)
+        with open(output_file, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerows(flow_list)

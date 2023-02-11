@@ -12,10 +12,23 @@ if not config.get("password"):
 card_login_session = CardLoginSession(config.get("username"), config.get("password"))
 card_flow = CardFlow(card_login_session)
 
-main_data = card_flow.get_card_flow(config.get("start_date"), config.get("end_date"))[
-    "rows"
-]
+if config.get("output_csv"):
+    card_flow.output_csv(
+        config.get("start_date"),
+        config.get("end_date"),
+        config.get("output_csv"),
+    )
+
 if config.get("standard_output"):
-    print(main_data)
+    flow_list = card_flow.get_card_flow_list(config.get("start_date"), config.get("end_date"))
+    for item in flow_list:
+        for i in item:
+            print(i, end="\t")
+        print()
+
 if config.get("qianji"):
-    qianji.main(main_data)
+    qianji.main(
+        card_flow.get_card_flow_raw(config.get("start_date"), config.get("end_date"))[
+            "rows"
+        ]
+    )

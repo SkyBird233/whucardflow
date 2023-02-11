@@ -11,6 +11,7 @@ class Config:
             "password": None,
             "start_date": time.strftime("%Y-%m-%d", time.localtime()),
             "end_date": time.strftime("%Y-%m-%d", time.localtime()),
+            "output_csv": "",
             "standard_output": True,
             "qianji": False,
         }
@@ -26,6 +27,7 @@ class Config:
         - password
         - start_date
         - end_date
+        - output_csv
         - standard_output
         - qianji
         """
@@ -38,6 +40,7 @@ class Config:
         - password
         - start_date
         - end_date
+        - output_csv
         - standard_output
         - qianji
         """
@@ -89,8 +92,14 @@ class Config:
             default=self._config["end_date"],
         )
         parser.add_argument(
+            "-c",
+            "--output-csv",
+            help="是否输出到csv文件",
+            default=self._config["output_csv"],
+        )
+        parser.add_argument(
             "-o",
-            "--standard_output",
+            "--standard-output",
             action="store_true",
             help="是否向标准输出打印结果",
             default=self._config["standard_output"],
