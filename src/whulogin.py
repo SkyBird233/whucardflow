@@ -99,7 +99,7 @@ class CardLoginSession(CasLoginSession):
         self.login()
 
     def login(self):
-        if self.is_captcha_required():
+        if any(self.is_captcha_required()):
             raise Exception("需要验证码")
 
         if not super().login():
