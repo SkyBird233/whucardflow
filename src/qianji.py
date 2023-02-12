@@ -5,7 +5,7 @@ import time
 def termux_open(uris):
     for uri in uris:
         os.system("termux-open " + '"' + uri + '"')
-        time.sleep(10.5)    # 钱迹 api 限制 10 秒只能提交一次
+        time.sleep(3.5)    # 钱迹 api 限制 3 秒只能提交一次
 
 
 def meal_time(meal_time):
