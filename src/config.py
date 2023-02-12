@@ -48,7 +48,7 @@ class Config:
 
     def _set_from_config_file(self, config_file):
         config = configparser.ConfigParser()
-        config.read(config_file)
+        config.read(config_file, encoding="utf-8")
 
         for i in config:
             for j in config[i]:

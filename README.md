@@ -1,4 +1,4 @@
-本项目用于抓取 校园卡消费记录，可以顺便导出到钱迹。
+本项目用于抓取校园卡消费记录，可以顺便导出到钱迹。
 
 由于在校内通过统一身份认证登录校园卡查询页面（202.114.64.162，只能校内访问）不需要任何验证，故采用这种方式登录并抓取数据。因为没有提供 api，最初使用 Selenium，之后尝试分析了下请求过程，改用 requests。
 
@@ -38,8 +38,9 @@
     抓取内容的日期范围
     - start_date
     - end_date
-- others
+- output
     - output_csv: 是否输出到 csv 文件，填入文件名路径。为空则不输出到 csv 文件
+- options
     - standard_output: 是否输出到标准输出
     - qianji: 是否输出到钱迹
 
@@ -52,7 +53,7 @@
 
 
 # 使用示例
-> 注意：Windows PowerShell 下需使用 `$env:WHUCF_USERNAME=202200000000` 设置环境变量
+> 注意：Windows PowerShell 下需使用 `$env:WHUCF_USERNAME=202200000000` 等方式设置环境变量
 - 导出当日记录至钱迹
     ```bash
     WHUCF_USERNAME=202200000000 WHUCF_PASSWORD=123456 python main.py --qianji
