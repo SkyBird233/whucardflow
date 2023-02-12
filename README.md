@@ -51,12 +51,13 @@
 ## 参数
 与配置文件对应，可以使用 `python main.py -h` 查看帮助
 
+> 如果都未设置，则会以交互模式要求输入
+
 
 # 使用示例
-> 注意：Windows PowerShell 下需使用 `$env:WHUCF_USERNAME=202200000000` 等方式设置环境变量
 - 导出当日记录至钱迹
     ```bash
-    WHUCF_USERNAME=202200000000 WHUCF_PASSWORD=123456 python main.py --qianji
+    python main.py --qianji -u 202200000000 -p 123456
     ```
 - 查看特定日期范围内的记录
     ```bash
@@ -64,7 +65,7 @@
     python main.py -s 2020-01-01 -e 2020-01-31 -o
     python main.py -s 2020-02-01 -e 2020-02-31 -o
     ```
-- 设定过帐号的情况下导出当日记录至 csv 文件
+- 导出当日记录至 csv 文件
     ```bash
-    WHUCF_PASSWORD=123456 python main.py -c output.csv
+    python main.py -c output.csv
     ```
