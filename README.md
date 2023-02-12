@@ -69,3 +69,9 @@
     ```bash
     python main.py -c output.csv
     ```
+
+# 文档
+https://github.com/SkyBird233/whucardflow/wiki/Doc
+
+# TODO
+- [ ] 日志
