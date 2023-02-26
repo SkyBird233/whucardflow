@@ -51,7 +51,7 @@ def main(card_flows):
             params["type"] = "0"
             params["money"] = str(-money)
             params["accountname"] = "饭卡"
-            if "食堂" in flow["MERCNAME"]:
+            if "食堂" or "美食城" in flow["MERCNAME"]:
                 params["catename"] = meal_time(flow["OCCTIME"])
             else:
                 params["catename"] = "其他"
